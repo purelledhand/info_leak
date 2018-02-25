@@ -65,8 +65,8 @@ def process_system_hive(hive):
     shutdown_time = parse_windows_filetime(raw_shutdown_time[0])
     print("Last Shutdown Time: {}".format(shutdown_time))
 
-    time_zone = control_set.find_key("Control").find_key("TimeZoneInformation").value("TimeZoneKeyName").value()
-    print("Machine Time Zone: {}".format(time_zone))
+    serial_num = control_set.find_key("Control").find_key("DeviceClasses").value()
+    print("serial number: {}".format(serial_num))
 
     computer_name = control_set.find_key("Control").find_key("ComputerName").find_key("ComputerName").value("ComputerName").value()
     print("Machine Name: {}".format(computer_name))
